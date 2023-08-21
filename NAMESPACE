@@ -1,0 +1,17 @@
+useDynLib(Kira,.registration = TRUE)
+export(knn)
+export(regression)
+export(lda)
+export(qda)
+export(hierarchical)
+export(kmeans)
+export(plot_curve)
+export(results)
+
+importFrom(graphics, abline, legend, par, plot, points, text, lines, pairs ,grid, rect, axis, box)
+importFrom(stats, as.dendrogram, hclust, kmeans, as.dist, cor, cutree, dist, rect.hclust, lm) 
+importFrom(MASS, ginv, lda, qda)
+importFrom(grDevices, dev.off, png, chull, dev.new)
+importFrom(utils, data)
+
+
