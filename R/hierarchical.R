@@ -277,7 +277,7 @@ hierarchical <- function(data, titles = NA, analysis = "Obs", cor.abs = FALSE,
      R.sqt <- SSB / sum.sqt # R quadrado
   }
   ### FIM - analysiss dos grupos ###
-  tab.res.groups[,3]
+   
   message("\n \n End!")
   
   lista <- list(tab.res = tab.sim, groups = m.groups, 

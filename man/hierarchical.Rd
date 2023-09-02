@@ -62,7 +62,7 @@ res <- hierarchical(data[,1:4], titles = NA, analysis = "Obs", cor.abs = FALSE,
       
 message("R squared: ", res$R.sqt)     
 # message("Total sum of squares: ", res$sum.sqt)
-message("Groups formed: ", res$groups)
+message("Groups formed: "); res$groups
 # message("Table with similarities and distances:"); res$tab.res
 # message("Table with the results of the groups:"); res$res.groups
 # message("Distance Matrix:"); res$mtx.dist

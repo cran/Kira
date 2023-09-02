@@ -41,7 +41,7 @@ regression <- function(train, test = NA, class, intercept = TRUE) {
      model <- stats::lm(classes ~., data = train)
   } else model <- stats::lm(classes ~ 0 +., data = train)
 
-  predict <- round(predict(model, test, type = "response"))
+  predict <- round(abs(predict(model, test, type = "response")))
  
   # transforma os resultados com os nomes das classes originais
   if (is.factor(class) || is.character(class)) {

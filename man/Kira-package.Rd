@@ -4,7 +4,7 @@
 
 \docType{package}
 
-\title{Kira}
+\title{Machine learning and data mining.}
 
 \description{Machine learning, containing several algorithms, in addition to functions that plot the graphs of the Receiver Operating Characteristic (ROC) and Precision-Recall (PRC) curve, and also a function that returns several metrics used to evaluate the models, the latter can be used in the classification results of other packages.}
  
@@ -12,8 +12,8 @@
 \tabular{ll}{
 Package: \tab Kira\cr
 Type: \tab Package\cr
-Version: \tab 1.0.0\cr
-Date: \tab 2023-08-21\cr
+Version: \tab 1.0.1\cr
+Date: \tab 2023-09-02\cr
 License: \tab GPL(>= 2)\cr
 LazyLoad: \tab yes\cr
 }
