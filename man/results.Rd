@@ -14,6 +14,9 @@
 }
 
 \value{
+  \item{mse}{Mean squared error.}
+  \item{mae}{Mean absolute error.} 
+  \item{rae}{Relative absolute error.}
   \item{conf.mtx}{Confusion matrix.}
   \item{rate.hits}{Hit rate.}
   \item{rate.error}{Error rate.}
@@ -28,7 +31,7 @@
 \author{Paulo Cesar Ossani}
 
 \references{
-Chicco, D.; Warrens, M. J.; Jurman, G. The matthews correlation coefficient (mcc) is more informative than cohen's kappa and brier score in binary classification assessment. \emph{IEEE Access, IEEE}, v. 9, p. 78368-78381, 2021.
+Chicco, D.; Warrens, M. J. and Jurman, G. The matthews correlation coefficient (mcc) is more informative than cohen's kappa and brier score in binary classification assessment. \emph{IEEE Access, IEEE}, v. 9, p. 78368-78381, 2021.
 }
 
 \seealso{\code{\link{plot_curve}}}
@@ -65,6 +68,9 @@ res <- knn(train = data.train[,1:r], test = data.test[,1:r], class = class.train
 
 resp <- results(orig.class = class.test, predict = res$predict)
 
+message("Mean squared error:"); resp$mse
+message("Mean absolute error:"); resp$mae
+message("Relative absolute error:"); resp$rae
 message("Confusion matrix:"); resp$conf.mtx  
 message("Hit rate: ", resp$rate.hits)
 message("Error rate: ", resp$rate.error)
@@ -80,8 +86,8 @@ dat <- resp$roc.curve; tp = "roc"; ps = 3
 
 plot_curve(data = dat, type = tp, title = NA, xlabel = NA, ylabel = NA,  
            posleg = ps, boxleg = FALSE, axis = TRUE, size = 1.1, grid = TRUE, 
-           color = TRUE, classcolor = NA, savptc = FALSE,
-           width = 3236, height = 2000, res = 300)
+           color = TRUE, classcolor = NA, savptc = FALSE, width = 3236, 
+           height = 2000, res = 300, casc = FALSE)
 
 }
 

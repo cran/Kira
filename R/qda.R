@@ -29,14 +29,15 @@ qda <- function(data, test = NA, class = NA, type = "train",
   if (!is.na(prior[1]) && sum(prior) != 1)
      stop("The sum of the elements in 'prior' must be equal to one. Verify!")
   
-  type = tolower(type) # torna minusculo
+  type <- tolower(type) # torna minusculo
   if (!(type %in% c("train","test")))
      stop("'type' input is incorrect, it should be: 'train' or 'test'. Verify!")
   
   if (type == "test" && is.na(test[1]))
      stop("Input for type = 'test', the 'test' vector must be added. Verify!")
   
-  method = tolower(method) # torna minusculo
+  method <- tolower(method) # torna minusculo
+  if (method == "mom") method = "moment"
   if (!(method %in% c("mle","mve","moment","t")))
      stop("'method' input is incorrect, it should be: 'mle', 'mve', 'moment' or 't'. Verify!")
   

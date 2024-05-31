@@ -24,9 +24,9 @@
 \author{Paulo Cesar Ossani}
 
 \references{
-Aha, D. W.; Kibler, D.; Albert, M. K. Instance-based learning algorithms. \emph{Machine learning.} v.6, n.1, p.37-66. 1991.
+Aha, D. W.; Kibler, D. and Albert, M. K. Instance-based learning algorithms. \emph{Machine learning.} v.6, n.1, p.37-66. 1991.
 
-Nicoletti, M. do C.. O modelo de aprendizado de maquina baseado em exemplares: principais caracteristicas e algoritmos. Sao Carlos: EdUFSCar, 2005. 61 p.
+Nicoletti, M. do C. O modelo de aprendizado de maquina baseado em exemplares: principais caracteristicas e algoritmos. Sao Carlos: EdUFSCar, 2005. 61 p.
 
 }
 
@@ -64,6 +64,9 @@ res <- knn(train = data.train[,1:r], test = data.test[,1:r], class = class.train
 
 resp <- results(orig.class = class.test, predict = res$predict)
 
+message("Mean squared error:"); resp$mse
+message("Mean absolute error:"); resp$mae
+message("Relative absolute error:"); resp$rae
 message("Confusion matrix:"); resp$conf.mtx  
 message("Hit rate: ", resp$rate.hits)
 message("Error rate: ", resp$rate.error)

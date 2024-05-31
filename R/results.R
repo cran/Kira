@@ -8,6 +8,9 @@ results <- function(orig.class, predict) {
   # predict    - dados com as classes dos resultados dos classificadores.
 
   # Retorna:
+  # mse  - Erro quadratico medio
+  # mae  - Erro absoluto medio 
+  # rae  - Erro absoluto relativo
   # conf.mtx   - matriz de confusao;
   # rate.hits  - taxa de acertos;
   # rate.error - taxa de erros;
@@ -40,10 +43,19 @@ results <- function(orig.class, predict) {
     return(table)
   }
   ### FIM - Cria tabela de contingencia dos dados ###
-  
   class <- as.factor(orig.class) # classes originais dos dados
   predc <- as.factor(predict)    # classes predita dos dados
-
+  
+  ## Incio - Erros na classficacao ##
+  vlr.class <- as.numeric(class)
+  vlr.prdct <- as.numeric(predict)
+  num.obs   <- length(class) 
+  mean.cls  <- mean(vlr.class)
+  mse  <- sum((vlr.class - vlr.prdct)^2) / num.obs  # Erro quadratico medio
+  mae  <- sum(abs(vlr.class - vlr.prdct)) / num.obs # Erro absoluto medio 
+  rae  <- num.obs * mae / sum(abs(vlr.class - mean.cls)) # Erro absoluto relativo
+  ## Incio - Erros na classficacao ##
+  
   # class.names <- as.character(sort(unique(class)))    # nomes das classes
   # if(length(levels(class)) < length(levels(predc)))
   #    class.names <- as.character(sort(unique(predc))) # nomes das classes
@@ -148,7 +160,8 @@ results <- function(orig.class, predict) {
   res.class[,"ROC Area"]    <- c(round(AUC,4), round(sum(AUC * sum.lin / num.inst),4))
   res.class[,"PRC Area"]    <- c(round(PRC,4), round(sum(PRC * sum.lin / num.inst),4))
   
-  list <- list(conf.mtx = conf.mtx, rate.hits = rate.hits,
+  list <- list(mse = mse, mae = mae, rae = rae,
+               conf.mtx = conf.mtx, rate.hits = rate.hits,
                rate.error = rate.error, num.hits = num.hits,
                num.error = num.error, kappa = kappa,
                roc.curve = roc.curve, prc.curve = prc.curve,

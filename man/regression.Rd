@@ -22,9 +22,9 @@
 \author{Paulo Cesar Ossani}
 
 \references{
-Charnet, R.; at al.. \emph{Analise de modelos de regressao lienar,} 2a ed. Campinas: Editora da Unicamp, 2008. 357 p.
+Charnet, R. at al. \emph{Analise de modelos de regressao lienar,} 2a ed. Campinas: Editora da Unicamp, 2008. 357 p.
 
-Rencher, A. C.; Schaalje, G. B. \emph{Linear models in statisctic.} 2th. ed. New Jersey: John & Sons, 2008. 672 p.
+Rencher, A. C. and Schaalje, G. B. \emph{Linear models in statisctic.} 2th. ed. New Jersey: John & Sons, 2008. 672 p.
 
 Rencher, A. C. \emph{Methods of multivariate analysis.} 2th. ed. New York: J.Wiley, 2002. 708 p.
 
@@ -53,6 +53,9 @@ res <- regression(train = data.train[,1:r], test = data.test[,1:r],
 
 resp <- results(orig.class = class.test, predict = res$predict)
 
+message("Mean squared error:"); resp$mse
+message("Mean absolute error:"); resp$mae
+message("Relative absolute error:"); resp$rae
 message("Confusion matrix:"); resp$conf.mtx  
 message("Hit rate: ", resp$rate.hits)
 message("Error rate: ", resp$rate.error)

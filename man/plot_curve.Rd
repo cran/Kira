@@ -9,7 +9,7 @@
 \usage{plot_curve(data, type = "ROC", title = NA, xlabel = NA, ylabel = NA,  
            posleg = 3, boxleg = FALSE, axis = TRUE, size = 1.1, grid = TRUE, 
            color = TRUE, classcolor = NA, savptc = FALSE, width = 3236, 
-           height = 2000, res = 300)}
+           height = 2000, res = 300, casc = TRUE)}
  
 \arguments{
   \item{data}{Data with x and y coordinates.}
@@ -32,6 +32,7 @@
   \item{width}{Graphics images width when savptc = TRUE (defaul = 3236).}
   \item{height}{Graphics images height when savptc = TRUE (default = 2000).}
   \item{res}{Nominal resolution in ppi of the graphics images when savptc = TRUE (default = 300).}
+  \item{casc}{Cascade effect in the presentation of the graphic (default = TRUE).}
 }
 
 \value{ROC or PRC curve.}
@@ -72,6 +73,9 @@ res <- knn(train = data.train[,1:r], test = data.test[,1:r], class = class.train
 
 resp <- results(orig.class = class.test, predict = res$predict)
 
+message("Mean squared error:"); resp$mse
+message("Mean absolute error:"); resp$mae
+message("Relative absolute error:"); resp$rae
 message("Confusion matrix:"); resp$conf.mtx  
 message("Hit rate: ", resp$rate.hits)
 message("Error rate: ", resp$rate.error)
@@ -88,7 +92,7 @@ dat <- resp$roc.curve; tp = "roc"; ps = 3
 plot_curve(data = dat, type = tp, title = NA, xlabel = NA, ylabel = NA,  
            posleg = ps, boxleg = FALSE, axis = TRUE, size = 1.1, grid = TRUE, 
            color = TRUE, classcolor = NA, savptc = FALSE,
-           width = 3236, height = 2000, res = 300)
+           width = 3236, height = 2000, res = 300, casc = FALSE)
 
 }
 

@@ -25,15 +25,20 @@ knn <- function(train, test, class, k = 1, dist = "euclidean", lambda = 3) {
         stop("Input 'class' or 'train' is incorrect, must contain the same number of lines. Check!")
   }
   
-  dist  <- toupper(dist) # transforma em maiusculo
-
+  dist <- toupper(dist) # transforma em maiusculo
+  if      (dist == "EUC") dist = "EUCLIDEAN"
+  else if (dist == "MAN") dist = "MANHATTAN"  
+  else if (dist == "MIN") dist = "MINKOWSKI" 
+  else if (dist == "CAN") dist = "CANBERRA" 
+  else if (dist == "MAX") dist = "MAXIMUM" 
+  else if (dist == "CHE") dist = "CHEBYSHEV"
   if (!(dist %in% c("EUCLIDEAN", "MANHATTAN", "MINKOWSKI", "CANBERRA", "MAXIMUM", "CHEBYSHEV")))
      stop("Input 'dist' is incorrect, it should be: 'euclidean', 'manhattan', 'minkowski', 'canberra', 'maximum' or 'chebyshev'. Check!")
   
   if (k < 0 && !(k == round(k)))
      stop("Input 'k' is incorrect, must be positive integers numbers. Check!")
   
-  if (lambda < 0)# && !(lambda == round(lambda)))
+  if (lambda < 0) # && !(lambda == round(lambda)))
      stop("Input 'lambda' is incorrect, must be a number greater than zero. Check!")
   
   message("\014") # limpa a tela

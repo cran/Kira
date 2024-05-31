@@ -68,6 +68,9 @@ res <- qda(data = data[,1:r], test = NA, class = class,
 
 resp <- results(orig.class = class, predict = res$predict)
 
+message("Mean Squared Error:"); resp$mse
+message("Mean absolute error:"); resp$mae
+message("Relative absolute error:"); resp$rae
 message("Confusion matrix: "); resp$conf.mtx  
 message("Hit rate: ", resp$rate.hits)
 message("Error rate: ", resp$rate.error)
@@ -87,6 +90,9 @@ res <- qda(data = data[,1:r], test = test, class = class,
 
 resp <- results(orig.class = class.test, predic = res$predict)
 
+message("Mean squared error:"); resp$mse
+message("Mean absolute error:"); resp$mae
+message("Relative absolute error:"); resp$rae
 message("Confusion matrix: "); resp$conf.mtx  
 message("Hit rate: ", resp$rate.hits)
 message("Error rate: ", resp$rate.error)

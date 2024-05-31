@@ -1,7 +1,7 @@
 plot_curve <- function(data, type = "ROC", title = NA, xlabel = NA, ylabel = NA,  
                 posleg = 3, boxleg = FALSE, axis = TRUE, size = 1.1, grid = TRUE, 
                 color = TRUE, classcolor = NA, savptc = FALSE, width = 3236, 
-                height = 2000, res = 300) { 
+                height = 2000, res = 300, casc = TRUE) { 
 
   # Esta funcao plota a curva ROC e PRC desenvolvida 
   # por Paulo Cesar Ossani em 27/05/2021
@@ -27,7 +27,8 @@ plot_curve <- function(data, type = "ROC", title = NA, xlabel = NA, ylabel = NA,
   # width  - Largura do grafico quanto savptc = TRUE (defaul = 3236).
   # height - Altura do grafico quanto savptc = TRUE (default = 2000).
   # res    - Resolucao nominal em ppi do grafico quanto savptc = TRUE (default = 300).
-
+  # casc   - Efeito cascata na apresentacao dos graficos (default = TRUE).
+  
   # Retorna:
   # curva ROC ou PRC.
 
@@ -74,6 +75,9 @@ plot_curve <- function(data, type = "ROC", title = NA, xlabel = NA, ylabel = NA,
   
   if (!is.numeric(res) || res <= 0)
      stop("'res' input is incorrect, it should be numerical and greater than zero. Verify!")
+  
+  if (!is.logical(casc) && !savptc)
+     stop("'casc' input is incorrect, it should be TRUE or FALSE. Verify!")
   
   ### Inicio - Informacoes usadas nos Graficos ###
   
@@ -132,6 +136,8 @@ plot_curve <- function(data, type = "ROC", title = NA, xlabel = NA, ylabel = NA,
     
     if (savptc) png(filename = paste("Figure ", type, " curve - ", names.class[i],".png", sep =""), width = width, height = height, res = res) # salva os graficos em arquivos
     
+    if (casc && !savptc) dev.new() # efeito cascata na apresentacao dos graficos
+    
     point.form <- init.form + i # fomato dos pontos de cada classe
     
     plot(.5,.5, # cria grafico para as coordenadas linhas x e colunas y
@@ -189,6 +195,8 @@ plot_curve <- function(data, type = "ROC", title = NA, xlabel = NA, ylabel = NA,
   ### Inicio - Plota todas as classes conjuntamente ### 
   if (savptc) png(filename = paste("Figure", type, "curve - all classes.png"), width = width, height = height, res = res) # salva os graficos em arquivos
   
+  if (casc && !savptc) dev.new() # efeito cascata na apresentacao dos graficos
+
   plot(.5,.5, # cria grafico para as coordenadas linhas x e colunas y
        xlab = xlabel, # Nomeia Eixo X
        ylab = ylabel, # Nomeia Eixo Y

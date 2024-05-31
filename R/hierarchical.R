@@ -53,15 +53,28 @@ hierarchical <- function(data, titles = NA, analysis = "Obs", cor.abs = FALSE,
      stop("'normalize' input is incorrect, it should be TRUE or FALSE. Verify!")
 
   distance <- tolower(distance) # torna minusculo
-
+  if      (distance == "euc") distance = "euclidean"
+  else if (distance == "max") distance = "maximum" 
+  else if (distance == "man") distance = "manhattan"
+  else if (distance == "can") distance = "canberra"
+  else if (distance == "bin") distance = "binary"
+  else if (distance == "min") distance = "minkowski"
   if (!(distance %in% c("euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski")))
      stop("'distance' input is incorrect, it should be: 'euclidean', 
-          'maximum', 'manhattan', 'canberra', 'binary' ou 'minkowski'. Verify!")
+          'maximum', 'manhattan', 'canberra', 'binary' or 'minkowski'. Verify!")
   
-  meth <- c("complete", "ward.D", "ward.D2", "single", "average", "mcquitty", "median" , "centroid")
+  meth <- c("complete", "ward.D", "ward.D2", "single", "average", "mcquitty", "median", "centroid")
+  if      (method == "com") method = "complete" 
+  else if (method == "war") method = "ward.D" 
+  else if (method == "wa2") method = "ward.D2" 
+  else if (method == "sin") method = "single"
+  else if (method == "ave") method = "average"
+  else if (method == "mcq") method = "mcquitty"
+  else if (method == "med") method = "median"
+  else if (method == "cen") method = "centroid"
   if (!(method %in% meth)) 
      stop("'method' input is incorrect, it should be: 'complete', 'ward.D', 
-          'ward.D2', 'single', 'average', 'mcquitty', 'median' ou 'centroid'. Verify!")
+          'ward.D2', 'single', 'average', 'mcquitty', 'median' or 'centroid'. Verify!")
   
   if (!is.logical(horizontal)) 
      stop("'horizontal' input is incorrect, it should be TRUE or FALSE. Verify!")
@@ -111,7 +124,7 @@ hierarchical <- function(data, titles = NA, analysis = "Obs", cor.abs = FALSE,
   }
     
   if (analysis == "OBS") # analysis nas observacoes
-     mtx.dist <- dist(data.new, method = distance, p = lambda) # matrix das distancias
+      mtx.dist <- dist(data.new, method = distance, p = lambda) # matrix das distancias
    
   if (analysis == "VAR") {# analysis nas variaveis
      if (cor.abs) # matrix de correlacao absoluta
