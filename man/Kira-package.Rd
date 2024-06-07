@@ -12,8 +12,8 @@
 \tabular{ll}{
 Package: \tab Kira\cr
 Type: \tab Package\cr
-Version: \tab 1.0.2\cr
-Date: \tab 2024-05-31\cr
+Version: \tab 1.0.3\cr
+Date: \tab 2024-06-07\cr
 License: \tab GPL(>= 3)\cr
 LazyLoad: \tab yes\cr
 }
@@ -24,7 +24,7 @@ This package contains:
   \item{Algorithms for unsupervised classification: hierarchical, kmeans, etc.}
   \item{A function that plots the ROC and PRC curve.}
   \item{A function that returns a series of metrics from models.}
-  \item{Functions that determine the ideal number of clusters: elbow, #####.}
+  \item{Function that determine the ideal number of clusters: elbow.}
 }
 }
 

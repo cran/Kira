@@ -32,7 +32,6 @@
 
 \value{
   \item{k.ideal}{Ideal number of clusters.}
-  \item{-}{Elbow graph.}
 }
 
 \author{Paulo Cesar Ossani}
