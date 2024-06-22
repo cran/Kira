@@ -1,6 +1,6 @@
-de9ea88d1b9da305e64a60b4b167a566 *DESCRIPTION
-a61223e9588a3c3fcd28575be709eb20 *NAMESPACE
-6692a1adf69c0b71418c98daa7c8f0d1 *R/elbow.R
+497777cd6485d48646020ac221d14761 *DESCRIPTION
+4945fa9261d98c3c8c6457f99302eff7 *NAMESPACE
+0dd30900ae3bab31e076aa1bf9a386d1 *R/elbow.R
 2b2db325b1d81fcfa7486c13327dcceb *R/hierarchical.R
 ab4d929ba2876dcf133b0a6eb1509d06 *R/kmeans.R
 4bb9d2cbcad0ea5b57ed5a3b7598de08 *R/knn.R
@@ -9,8 +9,9 @@ d678b392ae41baf209f336aa2b760e81 *R/plot_curve.R
 6b50fe0cd80635ae7fb117cda98dd21d *R/qda.R
 b3829d972132703db05abb16479641e2 *R/regression.R
 1e36ee5f10dfa08c8139735b6a37d395 *R/results.R
-3f68183fcf68dd08190920fc23caa5a0 *man/Kira-package.Rd
-ba12c3f99605d60ff1fe39e098457937 *man/elbow.Rd
+d5742e4362931bb9951152508a8853be *R/silhouette.R
+0322a519ff9ac63ba73b806a0eab8563 *man/Kira-package.Rd
+f732ec8fbde0f3dd40dc3890c4d188e1 *man/elbow.Rd
 319f95b305142deb8777b0518878f4c7 *man/hierarchical.Rd
 1fc641c43b83a0adae41f2b6599f82ab *man/kmeans.Rd
 cfb10859eadd8b6b664b6aca0283eb48 *man/knn.Rd
@@ -19,5 +20,6 @@ cbaed983351889a107c70c284e80ed51 *man/plot_curve.Rd
 d8fac2d0c285c1ce3a2bdc48779b3dbc *man/qda.Rd
 fadc8e9bde000577d7ce472e86fb421b *man/regression.Rd
 d08ac9b27c1442c43356a3b888bd8b42 *man/results.Rd
+e020440c4e83d3a399084d6ef6f04b3d *man/silhouette.Rd
 bca3d5d92963b23bacfdfcbd25f6621b *src/Kira.c
 59ebed2f101b325cadb356a16a4337de *src/KiraRegister.c

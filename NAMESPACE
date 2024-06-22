@@ -10,7 +10,7 @@ export(plot_curve)
 export(results)
 export(elbow)
 
-importFrom(graphics, abline, legend, par, plot, points, text, lines, pairs, grid, rect, axis, box)
+importFrom(graphics, abline, legend, par, plot, points, text, lines, pairs, grid, rect, axis, box, "barplot", "mtext")
 importFrom(stats, predict, as.dendrogram, hclust, kmeans, as.dist, cor, cutree, dist, rect.hclust, lm) 
 importFrom(MASS, ginv, lda, qda)
 importFrom(grDevices, dev.off, png, chull, dev.new)

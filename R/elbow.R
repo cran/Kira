@@ -1,4 +1,4 @@
-elbow <- function(data, k.max = 20, method = "AutoElbow", plot = TRUE, cut = TRUE,
+elbow <- function(data, k.max = 10, method = "AutoElbow", plot = TRUE, cut = TRUE,
                   title = NA, xlabel = NA, ylabel = NA, size = 1.1, 
                   grid = TRUE, color = TRUE, savptc = FALSE, width = 3236, 
                   height = 2000, res = 300, casc = TRUE) {
@@ -8,7 +8,7 @@ elbow <- function(data, k.max = 20, method = "AutoElbow", plot = TRUE, cut = TRU
   
   # Entrada:
   # data   - Matriz ou database dos dados, sem as classes.
-  # k.max  - Numero maximo de clustes para comparacao (default = 20).
+  # k.max  - Numero maximo de clustes para comparacao (default = 10).
   # method - Metodo usado para encontrar o numero k ideal de agrupamentos:
   #          'jump', 'curvature', 'Exp', 'AutoElbow' (default).
   # plot   - Indica se plota o grafico Elbow (default = TRUE).
@@ -90,8 +90,6 @@ elbow <- function(data, k.max = 20, method = "AutoElbow", plot = TRUE, cut = TRU
   message("\014") # limpa a tela
   message("\n\n Processing the data. Wait for the end! \n")
   
-  if (savptc) png(filename = "Elbow graph.png", width = width, height = height, res = res) # salva os graficos em arquivo
-
   data <- scale(data) # normaliza por colunas os dados
   
   sum.sqt <- sum(data^2) # soma do quadrado total
@@ -133,8 +131,70 @@ elbow <- function(data, k.max = 20, method = "AutoElbow", plot = TRUE, cut = TRU
     
     print(paste("Processing k clusters: ", num.clusters, "/", k.max, " Estimated time to finish: ", time, sep = ""))
   }
+  
+  ### Inicio - Encontra o melhor k ###
+  k.cluster <- rep(0,length(var.prop))
+  if (method == "JUMP") { # Sugar e James (2003)
+    
+    # var <- var.prop #^(-ncol(data) / 2)
+    for(i in 3:length(var.prop))
+      k.cluster[i] <- abs(var.prop[i] - var.prop[i-1])
+    
+  } else if (method == "CURVATURE") { # Zhang et al.(2017) 
+    
+    for(i in 3:(length(var.prop)-1))
+      k.cluster[i] <- (var.prop[i-1] - var.prop[i]) / (var.prop[i] - var.prop[i+1]) # - 1
+    
+  } else if (method == "AUTOELBOW") { # Onumanyi et al. (2022) 
+    
+    x <- 1:k.max
+    y <- var.prop
+    
+    x.k <- (x - min(x)) / (max(x) - min(x)) # normalizado
+    y.k <- (y - min(y)) / (max(y) - min(y)) # normalizado
+    
+    k.cluster <- ((x.k - 1)^2 + (y.k - 1)^2) / (x.k^2 + 2*y.k^2)
+    
+  } else if (method == "EXP") { # Exponencial Ossani (2024)
+    
+    x <- 1:length(var.prop)
+    y <- var.prop
+    
+    reg  <- stats::lm(log(y)~x)
+    
+    pred <- predict(reg, as.data.frame(x)) 
+    
+    k.cluster <- y - pred
+    
+  } 
+  
+  if (method == "EXP") {
+    pos.k <- which.min(k.cluster)
+  } else { 
+    pos.k <- which.max(k.cluster)
+  }
+  
+  # pos.k <- 0
+  # for(r in 2:length(var.prop)) { # encontra o melhor k
+  #   if((var.prop[r-1] - var.prop[r]) < 0.05) { # mean(var.prop[2:length(var.prop)])) {
+  #     pos.k <- r - 1
+  #     break
+  #   }
+  # }
+  # 
+  # if(pos.k == 1) {
+  #   for(w in 2:length(var.prop)) { # encontra onde ha um salto no grafico
+  #     if(var.prop[w-1] < var.prop[w]) {
+  #       pos.k <- w
+  #       break
+  #     }
+  #   }
+  # }
+  ### Fim - Encontra o melhor k ###
 
   if(plot) {
+    
+    if (savptc) png(filename = "Elbow graph.png", width = width, height = height, res = res) # salva os graficos em arquivo
     
     if (casc && !savptc) dev.new() # efeito cascata na apresentacao dos graficos
     
@@ -168,69 +228,10 @@ elbow <- function(data, k.max = 20, method = "AutoElbow", plot = TRUE, cut = TRU
            lwd  = size+0.5, # espessura da linha
            cex  = size,     # Tamanho dos pontos
            col  = cor)
+    
+    if(pos.k > 1 && cut) abline(h = 0, v = pos.k, cex = 1.5, lty = 2) # coloca o corte no grafico
+    
   }
-  
-  ### Inicio - Encontra o melhor k ###
-  k.cluster <- rep(0,length(var.prop))
-  if (method == "JUMP") { # Sugar e James (2003)
-
-     # var <- var.prop #^(-ncol(data) / 2)
-     for(i in 3:length(var.prop))
-        k.cluster[i] <- abs(var.prop[i] - var.prop[i-1])
-
-  } else if (method == "CURVATURE") { # Zhang et al.(2017) 
-
-    for(i in 3:(length(var.prop)-1))
-       k.cluster[i] <- (var.prop[i-1] - var.prop[i]) / (var.prop[i] - var.prop[i+1]) # - 1
-
-  } else if (method == "AUTOELBOW") { # Onumanyi et al. (2022) 
-
-    x <- 1:k.max
-    y <- var.prop
-    
-    x.k <- (x - min(x)) / (max(x) - min(x)) # normalizado
-    y.k <- (y - min(y)) / (max(y) - min(y)) # normalizado
-   
-    k.cluster <- ((x.k - 1)^2 + (y.k - 1)^2) / (x.k^2 + 2*y.k^2)
-
-  } else if (method == "EXP") { # Exponencial Ossani (2024)
-    
-    x <- 1:length(var.prop)
-    y <- var.prop
-    
-    reg  <- stats::lm(log(y)~x)
-    
-    pred <- predict(reg, as.data.frame(x)) 
-    
-    k.cluster <- y - pred
-
-  } 
-  
-  if (method == "EXP") {
-     pos.k <- which.min(k.cluster)
-  } else { 
-     pos.k <- which.max(k.cluster)
-  }
-  
-  # pos.k <- 0
-  # for(r in 2:length(var.prop)) { # encontra o melhor k
-  #   if((var.prop[r-1] - var.prop[r]) < 0.05) { # mean(var.prop[2:length(var.prop)])) {
-  #     pos.k <- r - 1
-  #     break
-  #   }
-  # }
-  # 
-  # if(pos.k == 1) {
-  #   for(w in 2:length(var.prop)) { # encontra onde ha um salto no grafico
-  #     if(var.prop[w-1] < var.prop[w]) {
-  #       pos.k <- w
-  #       break
-  #     }
-  #   }
-  # }
-  ### Fim - Encontra o melhor k ###
-  
-  if(pos.k > 1 && cut) abline(h = 0, v = pos.k, cex = 1.5, lty = 2) # coloca o corte no grafico
   
   if (savptc) { 
      box(col = 'white')

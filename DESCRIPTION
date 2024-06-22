@@ -1,8 +1,8 @@
 Package: Kira
 Type: Package
 Title: Machine Learning
-Version: 1.0.3
-Date: 2024-06-07
+Version: 1.0.4
+Date: 2024-06-21
 Imports: graphics, grDevices, MASS, stats
 Authors@R: c(person("Paulo Cesar Ossani", 
              email = "ossanipc@hotmail.com", 
@@ -16,5 +16,5 @@ NeedsCompilation: yes
 Author: Paulo Cesar Ossani [aut, cre] (<https://orcid.org/0000-0002-6617-8085>)
 Maintainer: Paulo Cesar Ossani <ossanipc@hotmail.com>
 Repository: CRAN
-Packaged: 2024-06-07 14:36:28 UTC; Ossan
-Date/Publication: 2024-06-07 16:00:05 UTC
+Packaged: 2024-06-22 15:23:36 UTC; Ossan
+Date/Publication: 2024-06-22 15:40:02 UTC

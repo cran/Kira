@@ -12,8 +12,8 @@
 \tabular{ll}{
 Package: \tab Kira\cr
 Type: \tab Package\cr
-Version: \tab 1.0.3\cr
-Date: \tab 2024-06-07\cr
+Version: \tab 1.0.4\cr
+Date: \tab 2024-06-21\cr
 License: \tab GPL(>= 3)\cr
 LazyLoad: \tab yes\cr
 }
@@ -24,7 +24,7 @@ This package contains:
   \item{Algorithms for unsupervised classification: hierarchical, kmeans, etc.}
   \item{A function that plots the ROC and PRC curve.}
   \item{A function that returns a series of metrics from models.}
-  \item{Function that determine the ideal number of clusters: elbow.}
+  \item{Functions that determine the ideal number of clusters: elbow and silhouette.}
 }
 }
 
@@ -37,6 +37,8 @@ Paulo Cesar Ossani <ossanipc@hotmail.com>
 
 Aha, D. W.; Kibler, D. and Albert, M. K. Instance-based learning algorithms. \emph{Machine learning.} v.6, n.1, p.37-66. 1991.
 
+Anitha, S.; Metilda, M. A. R. Y. An extensive investigation of outlier detection by cluster validation indices. \emph{Ciencia e Tecnica Vitivinicola - A Science and Technology Journal}, v. 34, n. 2, p. 22-32, 2019. doi: 10.13140/RG.2.2.26801.63848
+
 Charnet, R. at al. \emph{Analise de modelos de regressao lienar,} 2a ed. Campinas: Editora da Unicamp, 2008. 357 p.
 
 Chicco, D.; Warrens, M. J. and Jurman, G. The matthews correlation coefficient (mcc) is more informative than cohen's kappa and brier score in binary classification assessment. \emph{IEEE Access, IEEE}, v. 9, p. 78368-78381, 2021.
@@ -44,6 +46,10 @@ Chicco, D.; Warrens, M. J. and Jurman, G. The matthews correlation coefficient (
 Erich, S. Stop using the Elbow criterion for k-means and how to choose the number of clusters instead. \emph{ACM SIGKDD Explorations Newsletter.} 25 (1): 36-42. arXiv:2212.12189. 2023. doi: 10.1145/3606274.3606278
 
 Ferreira, D. F. \emph{Estatistica Multivariada.} 2a ed. revisada e ampliada. Lavras: Editora UFLA, 2011. 676 p.
+
+Kaufman, L. and Rousseeuw, P. J. \emph{Finding Groups in Data: An Introduction to Cluster Analysis}, New York: John Wiley & Sons. 1990.
+
+Martinez, W. L.; Martinez, A. R.; Solka, J. \emph{Exploratory data analysis with MATLAB}. 2nd ed. New York: Chapman & Hall/CRC, 2010. 499 p.
 
 Mingoti, S. A. \emph{analysis de dados atraves de metodos de estatistica multivariada:} uma abordagem aplicada. Belo Horizonte: UFMG, 2005. 297 p.
 
@@ -54,6 +60,8 @@ Onumanyi, A. J.; Molokomme, D. N.; Isaac, S. J. and Abu-Mahfouz, A. M. Autoelbow
 Rencher, A. C. \emph{Methods of multivariate analysis.} 2th. ed. New York: J.Wiley, 2002. 708 p.
 
 Rencher, A. C. and Schaalje, G. B. \emph{Linear models in statisctic.} 2th. ed. New Jersey: John & Sons, 2008. 672 p.
+
+Rousseeuw P. J. Silhouettes: A Graphical Aid to the Interpretation and Validation of Cluster Analysis. \emph{Journal of Computational and Applied Mathematics}, 20:53-65. 1987. doi: 10.1016/0377-0427(87)90125-7
 
 Sugar, C. A. and James, G. M. Finding the number of clusters in a dataset: An information-theoretic approach. \emph{Journal of the American Statistical Association}, 98, 463, 750-763. 2003. doi: 10.1198/016214503000000666
 
