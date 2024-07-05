@@ -11,7 +11,7 @@
 \arguments{
   \item{train}{Data set of training, without classes.}
   \item{test}{Test data set.}
-  \item{class}{Vector with data classes names.}
+  \item{class}{Vector with training data class names}
   \item{k}{Number of nearest neighbors (default = 1).}
   \item{dist}{Distances used in the method: "euclidean" (default), "manhattan", "minkowski", "canberra", "maximum" or "chebyshev".}
   \item{lambda}{Value used in the minkowski distance (default = 3).}
