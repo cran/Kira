@@ -14,7 +14,7 @@ importFrom(graphics, abline, legend, par, plot, points, text, lines, pairs, grid
 importFrom(stats, predict, as.dendrogram, hclust, kmeans, as.dist, cor, cutree, dist, rect.hclust, lm) 
 importFrom(MASS, ginv, lda, qda)
 importFrom(grDevices, dev.off, png, chull, dev.new)
-importFrom(utils, data, combn)
+importFrom(utils, data)
 
 useDynLib(Kira,.registration = TRUE)
 

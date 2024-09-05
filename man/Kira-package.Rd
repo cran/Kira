@@ -12,8 +12,8 @@
 \tabular{ll}{
 Package: \tab Kira\cr
 Type: \tab Package\cr
-Version: \tab 1.0.5\cr
-Date: \tab 2024-07-04\cr
+Version: \tab 1.0.6\cr
+Date: \tab 2024-09-04\cr
 License: \tab GPL(>= 3)\cr
 LazyLoad: \tab yes\cr
 }
@@ -48,8 +48,6 @@ Erich, S. Stop using the Elbow criterion for k-means and how to choose the numbe
 Ferreira, D. F. \emph{Estatistica Multivariada.} 2a ed. revisada e ampliada. Lavras: Editora UFLA, 2011. 676 p.
 
 Kaufman, L. and Rousseeuw, P. J. \emph{Finding Groups in Data: An Introduction to Cluster Analysis}, New York: John Wiley & Sons. 1990.
-
-Kittler, J.; Hatef, M.; Duin, R. P. W. and Matas, J. On combining classifiers. \emph{IEEE Transactions on Pattern Analysis and Machine Intelligence.} 20(3):226-239. 1998. doi: 10.1109/34.667881
 
 Martinez, W. L.; Martinez, A. R.; Solka, J. \emph{Exploratory data analysis with MATLAB}. 2nd ed. New York: Chapman & Hall/CRC, 2010. 499 p.
 

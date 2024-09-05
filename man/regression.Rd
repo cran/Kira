@@ -11,7 +11,7 @@
 \arguments{
   \item{train}{Data set of training, without classes.}
   \item{test}{Test data set.}
-  \item{class}{Vector with training data class names.}
+  \item{class}{Vector with data classes names.}
   \item{intercept}{Consider the intercept in the regression (default = TRUE).}
 }
 
