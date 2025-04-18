@@ -194,7 +194,7 @@ elbow <- function(data, k.max = 10, method = "AutoElbow", plot = TRUE, cut = TRU
 
   if(plot) {
     
-    if (savptc) png(filename = "Elbow graph.png", width = width, height = height, res = res) # salva os graficos em arquivo
+    if (savptc) png(filename = "Elbow_graph.png", width = width, height = height, res = res) # salva os graficos em arquivo
     
     if (casc && !savptc) dev.new() # efeito cascata na apresentacao dos graficos
     

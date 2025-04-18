@@ -201,7 +201,7 @@ silhouette <- function(data, k.cluster = 2:10, plot = TRUE, cut = TRUE,
   if(plot && num.groups > 1) { 
     
     ## Inicio - Grafico dos indices Si ##
-    if (savptc) png(filename = "Silhouette Index graph.png", width = width, height = height, res = res) # salva os graficos em arquivo
+    if (savptc) png(filename = "Silhouette_Index_graph.png", width = width, height = height, res = res) # salva os graficos em arquivo
     
     if (casc && !savptc) dev.new() # efeito cascata na apresentacao dos graficos
     
@@ -246,7 +246,7 @@ silhouette <- function(data, k.cluster = 2:10, plot = TRUE, cut = TRUE,
   ## Inicio - Grafico de Silhueta ##
   if (num.groups == 1) { # caso haja apenas uma entrada em k.cluster 
     
-     if (savptc) png(filename = "Silhouette graph.png", width = width, height = height, res = res) # salva os graficos em arquivo
+     if (savptc) png(filename = "Silhouette_graph.png", width = width, height = height, res = res) # salva os graficos em arquivo
     
      if (casc && !savptc) dev.new() # efeito cascata na apresentacao dos graficos
     

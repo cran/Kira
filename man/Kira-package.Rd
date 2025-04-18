@@ -12,8 +12,8 @@
 \tabular{ll}{
 Package: \tab Kira\cr
 Type: \tab Package\cr
-Version: \tab 1.0.6\cr
-Date: \tab 2024-09-04\cr
+Version: \tab 1.0.7\cr
+Date: \tab 2025-04-19\cr
 License: \tab GPL(>= 3)\cr
 LazyLoad: \tab yes\cr
 }

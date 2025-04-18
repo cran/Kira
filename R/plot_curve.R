@@ -134,7 +134,7 @@ plot_curve <- function(data, type = "ROC", title = NA, xlabel = NA, ylabel = NA,
     x <- dat[,2] # valores eixo x
     y <- dat[,3] # valores eixo y
     
-    if (savptc) png(filename = paste("Figure ", type, " curve - ", names.class[i],".png", sep =""), width = width, height = height, res = res) # salva os graficos em arquivos
+    if (savptc) png(filename = paste("Figure_", type, "_curve_", names.class[i],".png", sep =""), width = width, height = height, res = res) # salva os graficos em arquivos
     
     if (casc && !savptc) dev.new() # efeito cascata na apresentacao dos graficos
     
@@ -193,7 +193,7 @@ plot_curve <- function(data, type = "ROC", title = NA, xlabel = NA, ylabel = NA,
   ### Fim - Plota uma classe por vez ### 
   
   ### Inicio - Plota todas as classes conjuntamente ### 
-  if (savptc) png(filename = paste("Figure", type, "curve - all classes.png"), width = width, height = height, res = res) # salva os graficos em arquivos
+  if (savptc) png(filename = paste("Figure_", type, "_curve_all_classes.png", sep=""), width = width, height = height, res = res) # salva os graficos em arquivos
   
   if (casc && !savptc) dev.new() # efeito cascata na apresentacao dos graficos
 

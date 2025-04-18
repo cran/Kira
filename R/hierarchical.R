@@ -168,7 +168,7 @@ hierarchical <- function(data, titles = NA, analysis = "Obs", cor.abs = FALSE,
      if (casc && !savptc) dev.new() # efeito cascata na apresentacao dos graficos
        
      if (savptc) {
-        name.figure = paste("Figure Cluster Screen plots 1 - distance ",distance," - method ", method,".png",sep="")
+        name.figure = paste("Figure_Cluster_Screen_plots_1-distance",distance,"-method_", method,".png",sep="")
         png(filename = name.figure, width = width, height = height, res = res) # salva os graficos em arquivos
      }
        
@@ -200,7 +200,7 @@ hierarchical <- function(data, titles = NA, analysis = "Obs", cor.abs = FALSE,
      if (casc && !savptc) dev.new() # efeito cascata na apresentacao dos graficos
        
      if (savptc) {
-        name.figure = paste("Figure Cluster Screen plots 2 - distance ",distance," - method ", method,".png",sep="")
+        name.figure = paste("Figure_Cluster_Screen_plots_2-distance_",distance,"-method_", method,".png",sep="")
         png(filename = name.figure, width = width, height = height, res = res) # salva os graficos em arquivos
      }
         
@@ -236,7 +236,7 @@ hierarchical <- function(data, titles = NA, analysis = "Obs", cor.abs = FALSE,
      
   ## INICIO - Plotagem do Dendrograma ##
   if (savptc) {
-     name.figure = paste("Figure Cluster Dendrogram - distance ",distance," - method ", method,".png",sep="")
+     name.figure = paste("Figure_Cluster_Dendrogram-distance_",distance,"-method_", method,".png",sep="")
      png(filename = name.figure, width = width, height = height, res = res) # salva os graficos em arquivos
   }
      
