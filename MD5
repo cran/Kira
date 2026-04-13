@@ -1,4 +1,4 @@
-bff3591d870e3131acd06d94c0edc151 *DESCRIPTION
+5254e18241a5d437fc6a9b7b01d92359 *DESCRIPTION
 3ccd11e303d95380856636abf8dc5d64 *NAMESPACE
 92a614995ecb6d4c0165b0579857a7a8 *R/brute.force.R
 b03929a76ec4adaf4375103572bc7157 *R/elbow.R
@@ -12,7 +12,7 @@ b3829d972132703db05abb16479641e2 *R/regression.R
 1e36ee5f10dfa08c8139735b6a37d395 *R/results.R
 85bdb78990bbf11fc758ce4e4d7545ea *R/silhouette.R
 029f41e33644c184f052478b0851e546 *R/vote.R
-87f1b008277cf167e60bf8294263a8fc *man/Kira-package.Rd
+837f0287d48a40e8025fd124eab633e2 *man/Kira-package.Rd
 993caeec27cc5aa69235365e8ac49c25 *man/brute.force.Rd
 f732ec8fbde0f3dd40dc3890c4d188e1 *man/elbow.Rd
 319f95b305142deb8777b0518878f4c7 *man/hierarchical.Rd
