@@ -9,7 +9,7 @@
 \usage{silhouette(data, k.cluster = 2:10, plot = TRUE, cut = TRUE,
            title = NA, xlabel = NA, ylabel = NA, size = 1.1, grid = TRUE, 
            color = TRUE, savptc = FALSE, width = 3236, height = 2000,
-           res = 300, casc = TRUE)}
+           res = 300, casc = FALSE)}
  
 \arguments{
   \item{data}{Data with x and y coordinates.}
@@ -26,7 +26,7 @@
   \item{width}{Graphic image width when savptc = TRUE (defaul = 3236).}
   \item{height}{Graphic image height when savptc = TRUE (default = 2000).}
   \item{res}{Nominal resolution in ppi of the graphic image when savptc = TRUE (default = 300).}
-  \item{casc}{Cascade effect in the presentation of the graphic (default = TRUE).}
+  \item{casc}{Cascade effect in the presentation of the graphic (default = FALSE).}
 }
 
 \value{
@@ -52,7 +52,7 @@ data(iris) # data set
 res <- silhouette(data = iris[,1:4], k.cluster = 2:10, cut = TRUE, 
                   plot = TRUE, title = NA, xlabel = NA, ylabel = NA, 
                   size = 1.1, grid = TRUE, savptc = FALSE, width = 3236, 
-                  color = TRUE, height = 2000, res = 300, casc = TRUE)
+                  color = TRUE, height = 2000, res = 300, casc = FALSE)
              
 res$k.ideal # number of clusters
 res$eve.si  # vector with averages of si indices
@@ -61,7 +61,7 @@ res$eve.si  # vector with averages of si indices
 res <- silhouette(data = iris[,1:4], k.cluster = 3, cut = TRUE, 
                   plot = TRUE, title = NA, xlabel = NA, ylabel = NA, 
                   size = 1.1, grid = TRUE, savptc = FALSE, width = 3236, 
-                  color = TRUE, height = 2000, res = 300, casc = TRUE)
+                  color = TRUE, height = 2000, res = 300, casc = FALSE)
              
 res$k.ideal # number of clusters
 res$eve.si  # vector with averages of si indices

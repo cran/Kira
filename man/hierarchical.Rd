@@ -9,7 +9,7 @@
 \usage{hierarchical(data, titles = NA, analysis = "Obs", cor.abs = FALSE,
          normalize = FALSE, distance = "euclidean", method = "complete", 
          horizontal = FALSE, num.groups = 0, lambda = 2, savptc = FALSE, 
-         width = 3236, height = 2000, res = 300, casc = TRUE)}
+         width = 3236, height = 2000, res = 300, casc = FALSE)}
 
 \arguments{
   \item{data}{Data to be analyzed.}
@@ -26,7 +26,7 @@
   \item{width}{Graphics images width when savptc = TRUE (defaul = 3236).}
   \item{height}{Graphics images height when savptc = TRUE (default = 2000).}
   \item{res}{Nominal resolution in ppi of the graphics images when savptc = TRUE (default = 300).}
-  \item{casc}{Cascade effect in the presentation of the graphics (default = TRUE).}
+  \item{casc}{Cascade effect in the presentation of the graphics (default = FALSE).}
 }
 
 \value{{Several graphics.}

@@ -50,6 +50,12 @@ knn <- function(train, test, class, k = 1, dist = "euclidean", lambda = 3) {
   if (dist == "CANBERRA")  ndist = 4  # canberra distance
   if (dist == "MAXIMUM" || dist == "CHEBYSHEV") ndist = 5 # maximum (Chebyshev) distance
   
+  numeric.var <- any(!sapply(sapply(train, class), function(x) any(x %in% c("numeric", "integer"))))
+  if (numeric.var) { # transforma os dados categoricos em binarios
+    train <- transf.data(train)
+    test  <- transf.data(test)
+  } 
+  
   nlin_train <- nrow(train)
   nlin_test  <- nrow(test)
   

@@ -9,14 +9,14 @@
 \usage{elbow(data, k.max = 10, method = "AutoElbow", plot = TRUE, 
       cut = TRUE, title = NA, xlabel = NA, ylabel = NA, size = 1.1,  
       grid = TRUE, color = TRUE, savptc = FALSE, width = 3236, 
-      height = 2000, res = 300, casc = TRUE)}
+      height = 2000, res = 300, casc = FALSE)}
  
 \arguments{
   \item{data}{Data with x and y coordinates.}
   \item{k.max}{Maximum number of clusters for comparison (default = 10).} 
   \item{method}{Method used to find the ideal number k of clusters: "jump", "curvature", "Exp", "AutoElbow" (default).} 
   \item{plot}{Indicates whether to plot the elbow graph (default = TRUE).}
-  \item{cut}{Indicates whether to plot the best cluster indicative line (default = TRUE).}
+  \item{cut}{Indicates whether to plot the best cluster indicative line (default = FALSE).}
   \item{title}{Title of the graphic, if not set, assumes the default text.}
   \item{xlabel}{Names the X axis, if not set, assumes the default text.}
   \item{ylabel}{Names the Y axis, if not set, assumes the default text.}
@@ -27,7 +27,7 @@
   \item{width}{Graphic image width when savptc = TRUE (defaul = 3236).}
   \item{height}{Graphic image height when savptc = TRUE (default = 2000).}
   \item{res}{Nominal resolution in ppi of the graphic image when savptc = TRUE (default = 300).}
-  \item{casc}{Cascade effect in the presentation of the graphic (default = TRUE).}
+  \item{casc}{Cascade effect in the presentation of the graphic (default = FALSE).}
 }
 
 \value{

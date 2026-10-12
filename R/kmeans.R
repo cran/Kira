@@ -31,7 +31,12 @@ kmeans <- function(data, normalize = FALSE, num.groups = 2) {
   message("\014") # limpa a tela
   message("\n\n Processing the data. Wait for the end!")
   
-  data.new <- data # dados a serem analizados
+  numeric.var <- any(!sapply(sapply(data, class), function(x) any(x %in% c("numeric", "integer"))))
+  if (numeric.var) { # transforma os dados categoricos em binarios
+     data.new <- transf.data(data)
+  } else {
+     data.new <- data # dados a serem analizados
+  }
   
   if (normalize)
      data.new <- scale(data.new) # normaliza por colunas os dados

@@ -1,7 +1,7 @@
 lda <- function(data, test = NA, class = NA, type = "train", 
                 method = "moment", prior = NA) {
 
-  # Esta funcao executa a Analide resultriminante linear
+  # Esta funcao executa a Analide distriminante linear
   # desenvolvida por Paulo Cesar Ossani em 24/07/2023
   
   # Entrada:
@@ -66,7 +66,7 @@ lda <- function(data, test = NA, class = NA, type = "train",
   
   if (type == "test" && !is.na(test[1]))
      train = as.integer(rownames(data[-test,]))
-     
+  
   message("\014") # limpa a tela
   message("\n\n Processing the data. Wait for the end!")
   

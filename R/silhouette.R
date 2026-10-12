@@ -1,7 +1,7 @@
 silhouette <- function(data, k.cluster = 2:10, plot = TRUE, cut = TRUE,
                   title = NA, xlabel = NA, ylabel = NA, size = 1.1, 
                   grid = TRUE, color = TRUE, savptc = FALSE, width = 3236, 
-                  height = 2000, res = 300, casc = TRUE) {
+                  height = 2000, res = 300, casc = FALSE) {
   
   # Funcao criada para encontrar o numero ideal de clusters usando o metodo silhouette.
   # Devensolvida por Paulo Cesar Ossani em 21/06/2024.
@@ -21,7 +21,7 @@ silhouette <- function(data, k.cluster = 2:10, plot = TRUE, cut = TRUE,
   # width  - Largura do grafico quanto savptc = TRUE (defaul = 3236).
   # height - Altura do grafico quanto savptc = TRUE (default = 2000).
   # res    - Resolucao nominal em ppi do grafico quanto savptc = TRUE (default = 300).
-  # casc   - Efeito cascata na apresentacao dos graficos (default = TRUE).
+  # casc   - Efeito cascata na apresentacao dos graficos (default = FALSE).
   
   # Retorna:
   # k.ideal - numero ideal de clusters
@@ -103,6 +103,11 @@ silhouette <- function(data, k.cluster = 2:10, plot = TRUE, cut = TRUE,
   message("\014") # limpa a tela
   message("\n\n Processing the data. Wait for the end! \n")
  
+  numeric.var <- any(!sapply(sapply(data, class), function(x) any(x %in% c("numeric", "integer"))))
+  if (numeric.var) { # transforma os dados categoricos em binarios
+     data <- transf.data(data)
+  } 
+  
   set.seed(7) # semente para fixar processo heuristico
   
   dist <- "euclidean"

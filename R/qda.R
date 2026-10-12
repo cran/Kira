@@ -69,7 +69,7 @@ qda <- function(data, test = NA, class = NA, type = "train",
   
   message("\014") # limpa a tela
   message("\n\n Processing the data. Wait for the end!")
-     
+
   result <- MASS::qda(class~., data, prior = prior, method = method, subset = train)
 
   if (type == "train" || is.na(test[1])) train = -train

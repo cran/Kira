@@ -1,7 +1,7 @@
 hierarchical <- function(data, titles = NA, analysis = "Obs", cor.abs = FALSE,  
                     normalize = FALSE, distance = "euclidean", method = "complete", 
                     horizontal = FALSE, num.groups = 0, lambda = 2, savptc = FALSE,
-                    width = 3236, height = 2000, res = 300, casc = TRUE) {
+                    width = 3236, height = 2000, res = 300, casc = FALSE) {
                     
   # Esta funcao executa a analises de agrupamentos hierarquicos,
   # desenvolvida por Paulo Cesar Ossani em 29/07/2023
@@ -27,7 +27,7 @@ hierarchical <- function(data, titles = NA, analysis = "Obs", cor.abs = FALSE,
   # width  - Largura do grafico quanto savptc = TRUE (defaul = 3236).
   # height - Altura do grafico quanto savptc = TRUE (default = 2000).
   # res    - Resolucao nominal em ppi do grafico quanto savptc = TRUE (default = 300).
-  # casc   - Efeito cascata na apresentacao dos graficos (default = TRUE).
+  # casc   - Efeito cascata na apresentacao dos graficos (default = FALSE).
   
   # Retorna:
   # Varios graficos.
@@ -108,7 +108,12 @@ hierarchical <- function(data, titles = NA, analysis = "Obs", cor.abs = FALSE,
   message("\014") # limpa a tela
   message("\n\n Processing the data. Wait for the end!")
   
-  data.new <- data # dados a serem analizados
+  numeric.var <- any(!sapply(sapply(data, class), function(x) any(x %in% c("numeric", "integer"))))
+  if (numeric.var) { # transforma os dados categoricos em binarios
+     data.new <- transf.data(data)
+  } else {
+     data.new <- data # dados a serem analizados
+  }
   
   if (normalize && analysis == "OBS")
      data.new <- scale(data.new) # normaliza por colunas os dados
@@ -128,10 +133,10 @@ hierarchical <- function(data, titles = NA, analysis = "Obs", cor.abs = FALSE,
    
   if (analysis == "VAR") {# analysis nas variaveis
      if (cor.abs) # matrix de correlacao absoluta
-         mtx.dist <- as.dist(1 - abs(cor(data))) # matrix das distancias
+         mtx.dist <- as.dist(1 - abs(cor(data.new))) # matrix das distancias
         
      if (!cor.abs) # matrix de correlacao
-         mtx.dist <- as.dist(1 - cor(data)) # matrix das distancias
+         mtx.dist <- as.dist(1 - cor(data.new)) # matrix das distancias
   }
      
   hc <- hclust(mtx.dist, method = method) # procedimento hierarquico
@@ -144,7 +149,7 @@ hierarchical <- function(data, titles = NA, analysis = "Obs", cor.abs = FALSE,
      m.groups  <- cbind(data, groups) # matriz com dados originais mais os grupos formados
      
   if (analysis == "VAR") {# novos grupos para as variaveis
-      m.groups <- cbind(colnames(data), groups) # matriz com dados originais mais os grupos formados
+      m.groups <- cbind(colnames(data.new), groups) # matriz com dados originais mais os grupos formados
       colnames(m.groups) <- c("Variables", "groups")
       rownames(m.groups) <- NULL
   }

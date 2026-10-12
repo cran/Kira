@@ -30,13 +30,20 @@ regression <- function(train, test = NA, class, intercept = TRUE) {
      names.class <- sort(unique(class))
      classes <- as.numeric(as.factor(class))
   }
- 
-  if (is.null(nrow(test)))
-     test <- train
   
   message("\014") # limpa a tela
   message("\n\n Processing the data. Wait for the end!")
 
+  numeric.var <- any(!sapply(sapply(train, class), function(x) any(x %in% c("numeric", "integer"))))
+  if (numeric.var) { # transforma os dados categoricos em binarios
+     train <- transf.data(train)
+     if (!is.null(nrow(test)))
+        test  <- transf.data(test)
+  } 
+  
+  if (is.null(nrow(test)))
+     test <- train
+  
   if (intercept) {
      model <- stats::lm(classes ~., data = train)
   } else model <- stats::lm(classes ~ 0 +., data = train)

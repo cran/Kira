@@ -54,8 +54,8 @@ brute.force <- function(func = NA, train, test, class.train,
      } else if (measure == "npr"   || measure == "negative predictive rate"){ measure = "Negative Predictive Rate"
      } else if (measure == "fscore" || measure == "F-Score")   { measure = "F-Score"
      } else if (measure == "mcc")                              { measure = "MCC"
-     } else if (measure == "roc"     || measure == "roc are")  { measure = "ROC Are"
-     } else if (measure == "prc"     || measure == "prc area") { measure = "PRC Area" }
+     } else if (measure == "roc"    || measure == "roc are")   { measure = "ROC Are"
+     } else if (measure == "prc"    || measure == "prc area")  { measure = "PRC Area" }
   }
   var.measure <- c('Rate Hits','Kappa Index','Sensitivity','Specificity',
                    'Precision','FP Rate','FN Rate','Negative Predictive Rate',
@@ -100,8 +100,8 @@ brute.force <- function(func = NA, train, test, class.train,
      text.model <- paste(text.model,"test = test[,comb[,j]], ", sep = "")
   }
   
-  if (!is.na(args))
-    text.model <- paste(text.model,args,sep = "")
+  if (!is.na(args)) text.model <- paste(text.model,args,sep = "")
+  
   text.model <- paste(text.model,")", sep = "")
   ## Fim - cria a estrutura no modelo de classificacao ##
  
