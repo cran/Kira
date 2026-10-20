@@ -16,35 +16,34 @@ IM <- function(data, names = TRUE) {
   if (!is.logical(names)) 
      stop("Entrada para 'names' esta incorreta, deve ser TRUE ou FALSE. Verifique!")
   
-  NumLinha  <- nrow(data)  # Numero de linhas na tabela
+  num.lin  <- nrow(data)  # Numero de linhas na tabela
   
+  MFinal <- NULL
   for (k in 1:ncol(data)) {
     
-    MConver   <- factor(data[,k]) # Matriz com os dados para a conversao
+     MConver   <- factor(data[,k]) # Matriz com os dados para a conversao
     
-    Nivel     <- levels(MConver)  # Nomes dos Niveis
+     Nivel     <- levels(MConver)  # Nomes dos Niveis
     
-    Qtd_Nivel <- nlevels(MConver) # Quantidade de Niveis
+     Qtd_Nivel <- nlevels(MConver) # Quantidade de Niveis
     
-    MDummy = matrix(0,NumLinha,Qtd_Nivel) # Cria Matriz Vazia com elementos zero
+     MDummy = matrix(0, num.lin, Qtd_Nivel) # Cria Matriz Vazia com elementos zero
     
-    for (i in 1:Qtd_Nivel)
+     for (i in 1:Qtd_Nivel) {
       
-      for ( j in 1:NumLinha)
-        
-        if (MConver[j]==Nivel[i]) MDummy[j,i] <- 1
-    
-    if (names) {
-       colnames(MDummy) <- paste(colnames(data[k]),Nivel,sep=":") # Nomeia as colunas 
-    } else {
-       colnames(MDummy) <- Nivel # Nomeia as colunas  
-    }
-    
-    if (k==1) MFinal <- MDummy
-    
-    else
+       for (j in 1:num.lin) {
+          if (MConver[j] == Nivel[i]) MDummy[j,i] <- 1
+       }
       
-      MFinal <- cbind(MFinal,MDummy)
+     }
+    
+     if (names) {
+        colnames(MDummy) <- paste(colnames(data)[k], Nivel, sep = ":") # Nomeia as colunas 
+     } else {
+        colnames(MDummy) <- Nivel # Nomeia as colunas  
+     }
+     
+     MFinal <- cbind(MFinal, MDummy)
     
   }
   

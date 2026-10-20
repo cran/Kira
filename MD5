@@ -1,6 +1,6 @@
-fd588f8d329ef293518532703bf3113a *DESCRIPTION
+2b5655b30468c246fddf44f8b89306e4 *DESCRIPTION
 a3cf4ee609c1d556046ddacc0f2a12eb *NAMESPACE
-af340435f686fc43c753009ba43ad841 *R/IM.R
+53aaf92eccd9a04e578a68ab4cddae3f *R/IM.R
 29e7b8aea3024c1b094ba55e809b8484 *R/brute.force.R
 f45588120f6c2b89e4348a8c5e1bd9e2 *R/elbow.R
 3794795f461185834712a3cf9be6af1d *R/hierarchical.R
@@ -10,11 +10,11 @@ f26d56029511cd7c01926bf72d3ae7c8 *R/lda.R
 fd7325399bf0246f8d0199367f1cba7d *R/plot_curve.R
 8dd6f63b09d65ec49679772482673e1f *R/qda.R
 6562f1e9291f11efcbe3888d08df21e5 *R/regression.R
-1e36ee5f10dfa08c8139735b6a37d395 *R/results.R
+ebef531d152b4a14e3c37932028214e3 *R/results.R
 cc15f76d43df55ce5f39772b99c564c8 *R/silhouette.R
-0ab8155f041c0c0da97a60498c83ce38 *R/transf.data.R
+bbb80338d97d9ec437192238e797acba *R/transf.data.R
 029f41e33644c184f052478b0851e546 *R/vote.R
-617f7173581497406ff13c057b9a5423 *man/Kira-package.Rd
+8bd9ce7d8997195d43ab93db7296e021 *man/Kira-package.Rd
 993caeec27cc5aa69235365e8ac49c25 *man/brute.force.Rd
 deb09eb9ca95742d340af09c706cbe4b *man/elbow.Rd
 93226f131983a4afc70093a0e433bcf3 *man/hierarchical.Rd

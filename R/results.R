@@ -22,6 +22,9 @@ results <- function(orig.class, predict) {
   # res.class  - resultados gerais para as classes: Sensitivity, Specificity,
   #              Precision, FP Rate, FN Rate, Negative Predictive Rate, F-Score, MCC, ROC Area, PRC Area
 
+  predict <- as.factor(predict)
+  orig.class <- as.factor(orig.class)
+  
   if (length(orig.class) != length(predict))
      stop("Input 'orig.class' and 'predict' is incorrect, must contain the same number of observations. Check!")
 
@@ -43,29 +46,27 @@ results <- function(orig.class, predict) {
     return(table)
   }
   ### FIM - Cria tabela de contingencia dos dados ###
-  class <- as.factor(orig.class) # classes originais dos dados
-  predc <- as.factor(predict)    # classes predita dos dados
-  
+
   ## Incio - Erros na classficacao ##
-  vlr.class <- as.numeric(class)
+  vlr.class <- as.numeric(orig.class)
   vlr.prdct <- as.numeric(predict)
-  num.obs   <- length(class) 
+  num.obs   <- length(orig.class) 
   mean.cls  <- mean(vlr.class)
   mse  <- sum((vlr.class - vlr.prdct)^2) / num.obs  # Erro quadratico medio
   mae  <- sum(abs(vlr.class - vlr.prdct)) / num.obs # Erro absoluto medio 
   rae  <- num.obs * mae / sum(abs(vlr.class - mean.cls)) # Erro absoluto relativo
   ## Incio - Erros na classficacao ##
   
-  # class.names <- as.character(sort(unique(class)))    # nomes das classes
-  # if(length(levels(class)) < length(levels(predc)))
-  #    class.names <- as.character(sort(unique(predc))) # nomes das classes
+  # class.names <- as.character(sort(unique(orig.class)))    # nomes das classes
+  # if(length(levels(orig.class)) < length(levels(predict)))
+  #    class.names <- as.character(sort(unique(predict))) # nomes das classes
   
-  class.names <- as.character(sort(unique(c(levels(class),levels(predc)))))    # nomes das classes
+  class.names <- as.character(sort(unique(c(levels(orig.class),levels(predict)))))    # nomes das classes
 
   class.num <- length(class.names) # numero de classes
   
-  conf.mtx <- table.cont(cbind(as.data.frame(class), predc), class.names) # matriz de confusao
-  # conf.mtx <- table(class, predc) # matriz de confusao
+  conf.mtx <- table.cont(cbind(as.data.frame(orig.class), predict), class.names) # matriz de confusao
+  # conf.mtx <- table(orig.class, predict) # matriz de confusao
 
   rate.hits  <- sum(diag(conf.mtx)) / sum(conf.mtx) # taxa de acertos
   rate.error <- 1 - rate.hits  # taxa de erros
